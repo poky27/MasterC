@@ -79,31 +79,33 @@ button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:no
 .stit{font-size:11px;color:var(--gold);font-family:'DM Sans',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin:8px 0 4px;}
 .footer{text-align:center;padding:14px;font-size:9px;color:#4a4030;font-family:'DM Sans',sans-serif;border-top:1px solid var(--bg2);margin-top:12px;}
 .stars{font-size:11px;letter-spacing:-1px;}
+.cook-btn{display:block;width:100%;margin-top:10px;padding:10px;background:rgba(22,163,74,.15);border:1px solid var(--grn);border-radius:8px;color:var(--grn);font-size:13px;font-weight:700;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.cook-btn:active{background:rgba(22,163,74,.3);}
 </style>
 </head>
 <body>
 <div class="header"><div class="header-sub">Sistema Progresivo</div><h1>Master Chef Neuro</h1><p>Mediterránea + MIND + Criolla · Lima, Perú</p></div>
 <div class="tabs" id="tabs"></div>
 <div class="cnt" id="cnt"></div>
-<div class="footer">Master Chef Neuro v2.0 · Abril 2026 · No sustituye consejo profesional</div>
+<div class="footer">Master Chef Neuro v3.0 · Abril 2026 · No sustituye consejo profesional</div>
 <script>
 const I={espinaca:{n:"Espinaca",c:"Hojas verdes",p:"S/2.00",u:"kg",i:"🥬",r:"Folato, Vit K, luteína"},acelga:{n:"Acelga",c:"Hojas verdes",p:"S/1.20",u:"kg",i:"🥬",r:"Vit K (830µg), magnesio"},col:{n:"Col/Repollo",c:"Hojas verdes",p:"S/0.80",u:"kg",i:"🥬",r:"Sulforafano, Vit C"},lechuga:{n:"Lechuga romana",c:"Hojas verdes",p:"S/1.50",u:"kg",i:"🥬",r:"Folato, betacaroteno"},perejil:{n:"Perejil",c:"Hojas verdes",p:"S/1.75",u:"kg",i:"🌿",r:"Apigenina, Vit C"},culantro:{n:"Culantro",c:"Hojas verdes",p:"S/1.50",u:"kg",i:"🌿",r:"Quercetina, Vit K"},brocoli:{n:"Brócoli",c:"Verduras",p:"S/2.25",u:"kg",i:"🥦",r:"Sulforafano, colina"},camote:{n:"Camote",c:"Verduras",p:"S/1.50",u:"kg",i:"🍠",r:"Betacaroteno, antocianinas(morado)"},zanahoria:{n:"Zanahoria",c:"Verduras",p:"S/1.00",u:"kg",i:"🥕",r:"Betacaroteno (8285µg)"},tomate:{n:"Tomate",c:"Verduras",p:"S/1.80",u:"kg",i:"🍅",r:"Licopeno(cocido+grasa=2-3x)"},cebolla_roja:{n:"Cebolla roja",c:"Verduras",p:"S/1.50",u:"kg",i:"🧅",r:"Quercetina 2-3x vs blanca"},ajo:{n:"Ajo",c:"Verduras",p:"S/12.00",u:"kg",i:"🧄",r:"Alicina antiinflamatoria"},pimiento:{n:"Pimiento",c:"Verduras",p:"S/2.50",u:"kg",i:"🫑",r:"Vit C (127mg)"},aji_amarillo:{n:"Ají amarillo",c:"Verduras",p:"S/3.50",u:"kg",i:"🌶️",r:"Capsaicina"},zapallo:{n:"Zapallo macre",c:"Verduras",p:"S/1.20",u:"kg",i:"🎃",r:"Betacaroteno. Pepitas=zinc+Mg"},choclo:{n:"Choclo",c:"Verduras",p:"S/3.20",u:"kg",i:"🌽",r:"Fibra, luteína"},papa:{n:"Papa amarilla",c:"Verduras",p:"S/2.50",u:"kg",i:"🥔",r:"Vit C, potasio"},arveja:{n:"Arveja",c:"Verduras",p:"S/5.00",u:"kg",i:"🟢",r:"Folato, Vit K"},apio:{n:"Apio",c:"Verduras",p:"S/1.50",u:"kg",i:"🥒",r:"Luteolina"},lentejas:{n:"Lentejas",c:"Legumbres",p:"S/5.50",u:"kg",i:"🫘",r:"Folato, hierro, prebiótico"},garbanzos:{n:"Garbanzos",c:"Legumbres",p:"S/7.00",u:"kg",i:"🫘",r:"Triptófano→serotonina"},frejol_negro:{n:"Frejol negro",c:"Legumbres",p:"S/6.00",u:"kg",i:"🫘",r:"Antocianinas+hierro"},frejol_canario:{n:"Frejol canario",c:"Legumbres",p:"S/5.50",u:"kg",i:"🫘",r:"Proteína, fibra"},habas:{n:"Habas",c:"Legumbres",p:"S/1.70",u:"kg",i:"🫛",r:"L-DOPA(dopamina)"},quinua:{n:"Quinua",c:"Granos",p:"S/10",u:"kg",i:"🌾",r:"Proteína completa"},arroz_integral:{n:"Arroz integral",c:"Granos",p:"S/4.50",u:"kg",i:"🍚",r:"Fibra, Mg, vit B"},avena:{n:"Avena",c:"Granos",p:"S/4.00",u:"kg",i:"🌾",r:"Beta-glucanos"},bonito:{n:"Bonito",c:"Pescados",p:"S/10",u:"kg",i:"🐟",r:"ω3:1.9g, prot23.4g"},caballa:{n:"Caballa",c:"Pescados",p:"S/8",u:"kg",i:"🐟",r:"ω3:1.6g, DHA"},jurel:{n:"Jurel",c:"Pescados",p:"S/6",u:"kg",i:"🐟",r:"ω3:1.3g, selenio"},trucha:{n:"Trucha",c:"Pescados",p:"S/17",u:"kg",i:"🐟",r:"ω3 EPA+DHA, VitD"},sardina:{n:"Sardina(lata)",c:"Pescados",p:"S/5",u:"lata",i:"🐟",r:"ω3:1.5g, calcio"},anchoveta:{n:"Anchoveta",c:"Pescados",p:"S/4",u:"kg",i:"🐟",r:"ω3:2.4g #1 Perú"},arandanos:{n:"Arándanos",c:"Frutas MIND",p:"S/22",u:"kg",i:"🫐",r:"Antocianinas top"},fresas:{n:"Fresas",c:"Frutas MIND",p:"S/5",u:"kg",i:"🍓",r:"Antocianinas, VitC"},aguaymanto:{n:"Aguaymanto",c:"Frutas MIND",p:"S/8",u:"kg",i:"🟡",r:"Polifenoles"},palta:{n:"Palta",c:"Frutas MIND",p:"S/4",u:"kg",i:"🥑",r:"Grasas mono, VitE"},limon:{n:"Limón",c:"Frutas MIND",p:"S/3.50",u:"kg",i:"🍋",r:"VitC, abs. hierro"},aceite_oliva:{n:"AOVE",c:"Grasas/otros",p:"S/35",u:"500ml",i:"🫒",r:"Oleocantal"},nueces:{n:"Nueces",c:"Grasas/otros",p:"S/50",u:"kg",i:"🥜",r:"ALA ω3, polifenoles"},semillas_calabaza:{n:"Pepitas zapallo",c:"Grasas/otros",p:"S/25",u:"kg",i:"🎃",r:"Zinc+Mg"},huevos:{n:"Huevos",c:"Proteína",p:"S/8",u:"docena",i:"🥚",r:"Colina→acetilcolina"},pollo:{n:"Pollo pechuga",c:"Proteína",p:"S/14",u:"kg",i:"🍗",r:"B12, zinc"},curcuma:{n:"Cúrcuma",c:"Grasas/otros",p:"S/15",u:"kg",i:"🟡",r:"Curcumina cruza BHE"},tahini:{n:"Tahini",c:"Grasas/otros",p:"S/12",u:"200g",i:"🥜",r:"Calcio, hierro"}};
 
 const R=[
-{id:"m1",n:"Bowl mediterráneo",ct:"med",t:"25m",b:3,u:2,pr:"~18g",k:["arroz_integral","garbanzos","espinaca","tomate","aceite_oliva","limon"],s:"1)Arroz integral 2)Garbanzos+ajo+AOVE 3)Saltea espinaca 2min 4)Arma bowl 5)AOVE+limón",nr:"Espinaca=folato+luteína. Garbanzos=triptófano. AOVE=polifenoles."},
-{id:"m2",n:"Sardinas con ensalada",ct:"med",t:"15m",b:4,u:3,pr:"~25g",k:["sardina","espinaca","palta","cebolla_roja","limon","quinua"],s:"1)Quinua 2)Espinaca+cebolla 3)Sardinas 4)Palta 5)Aceite de lata+limón",nr:"Sardinas=DHA. Palta=VitE+grasas mono."},
-{id:"m3",n:"Shakshuka",ct:"med",t:"25m",b:3,u:3,pr:"~20g",k:["huevos","tomate","pimiento","cebolla_roja","ajo","aceite_oliva"],s:"1)Sofríe cebolla+pimiento AOVE 2)Ajo+especias 3)Tomates 10min 4)Huevos adentro 5)Tapa 5-7min",nr:"Huevos=colina. Tomate cocido=licopeno biodisponible."},
-{id:"m4",n:"Hummus con crudités",ct:"med",t:"15m",b:3,u:2,pr:"~12g",k:["garbanzos","tahini","limon","ajo","aceite_oliva","zanahoria","apio"],s:"1)Licua garbanzos+tahini+limón+ajo+AOVE+agua 2)Corta zanahoria y apio 3)Sirve",nr:"Garbanzos=triptófano. Tahini=calcio. Zanahoria=betacaroteno."},
-{id:"m5",n:"Trucha al pesto de brócoli",ct:"med",t:"30m",b:5,u:5,pr:"~38g",k:["trucha","brocoli","nueces","ajo","aceite_oliva","quinua","limon"],s:"1)Quinua 2)Licua brócoli+nueces+ajo+AOVE=pesto 3)Unta trucha 4)Hornea 180°C 12min 5)Sobre quinua",nr:"Trucha=DHA. Brócoli=sulforafano. Nueces=ω3 vegetal."},
-{id:"c1",n:"🇵🇪 Seco de pollo",ct:"cri",t:"50m",b:4,u:4,pr:"~35g",k:["pollo","frejol_canario","culantro","cebolla_roja","ajo","aji_amarillo","arveja","zanahoria","aceite_oliva"],s:"1)Licua culantro+cebolla+ají 2)Dora pollo AOVE 3)Licuado+arvejas+zanahoria 4)Tapa 35min 5)Con frejoles. SWAP:quinua por arroz",nr:"Culantro=quercetina. SWAP:AOVE por aceite vegetal."},
-{id:"c2",n:"🇵🇪 Ceviche de bonito",ct:"cri",t:"20m",b:5,u:4,pr:"~28g",k:["bonito","limon","cebolla_roja","aji_amarillo","camote","culantro","choclo"],s:"1)Bonito cubos 2)Limón+ají+sal 3)Cebolla pluma 4)Reposa 5min 5)Camote+choclo",nr:"Bonito CRUDO=ω3 intacto 1.9g. Cebolla roja=quercetina."},
-{id:"c3",n:"🇵🇪 Sudado de caballa",ct:"cri",t:"30m",b:5,u:4,pr:"~30g",k:["caballa","tomate","cebolla_roja","ajo","aji_amarillo","culantro","aceite_oliva"],s:"1)Sofríe cebolla+ajo+ají AOVE 2)Tomates 8min 3)Caballa encima 4)Tapa 10-12min 5)Culantro",nr:"Caballa=DHA 1.6g. Tomate cocido=licopeno 2-3x."},
-{id:"c4",n:"🇵🇪 Locro de zapallo",ct:"cri",t:"35m",b:4,u:3,pr:"~20g",k:["zapallo","quinua","habas","cebolla_roja","ajo","aji_amarillo","huevos","aceite_oliva"],s:"1)Sofríe cebolla+ajo+ají AOVE 2)Zapallo+habas 3)Cocina 4)Quinua 5)Huevo poché+pepitas",nr:"Habas=L-DOPA. Quinua=AA completos. Pepitas=zinc+Mg."},
-{id:"c5",n:"🇵🇪 Aguadito verde",ct:"cri",t:"40m",b:4,u:4,pr:"~25g",k:["pollo","culantro","espinaca","arroz_integral","arveja","zanahoria","cebolla_roja","ajo","aji_amarillo","aceite_oliva"],s:"1)Sofríe cebolla+ajo+ají AOVE 2)Dora pollo 3)Licua culantro+espinaca 4)Arroz integral+arvejas 5)25min",nr:"DOBLE hoja verde=folato+VitK masivo. SWAP:arroz integral."},
-{id:"c6",n:"🇵🇪 Tacu-tacu con bonito",ct:"cri",t:"35m",b:5,u:5,pr:"~38g",k:["lentejas","arroz_integral","bonito","cebolla_roja","ajo","aji_amarillo","aceite_oliva","limon"],s:"1)Mezcla lentejas+arroz integral 2)Dora AOVE 3)Bonito plancha 3min/lado 4)Encima 5)Salsa criolla",nr:"Lentejas=folato+hierro. Bonito=ω3 1.9g. SWAP:AOVE por manteca."},
-{id:"c7",n:"🇵🇪 Causa de bonito",ct:"cri",t:"30m",b:4,u:3,pr:"~22g",k:["papa","palta","bonito","limon","aji_amarillo","aceite_oliva"],s:"1)Papa prensada 2)Ají+limón+AOVE 3)Capa papa-bonito-palta 4)Otra capa 5)Huevo+aceituna",nr:"Bonito=ω3. Palta=VitE. SWAP:AOVE en masa."},
-{id:"c8",n:"🇵🇪 Ensalada criolla+",ct:"cri",t:"10m",b:3,u:1,pr:"~3g",k:["cebolla_roja","tomate","limon","aji_amarillo","culantro","aceite_oliva"],s:"1)Cebolla pluma remoja 5min 2)Escurre 3)Tomate+ají+culantro 4)AOVE+limón 5)Acompaña todo",nr:"Cebolla roja=quercetina máx. AOVE=absorción fitoquímicos."},
-{id:"c9",n:"🇵🇪 Chupe de quinua",ct:"cri",t:"45m",b:4,u:4,pr:"~28g",k:["quinua","huevos","habas","zapallo","cebolla_roja","ajo","aji_amarillo","aceite_oliva"],s:"1)Sofríe cebolla+ajo+ají AOVE 2)Zapallo+habas 10min 3)Quinua+caldo 15min 4)Huevo poché 5)Queso fresco",nr:"Quinua=AA. Habas=L-DOPA. Zapallo=betacaroteno. Huevo=colina."}
+{id:"m1",n:"Bowl mediterráneo",ct:"med",t:"25m",b:3,u:2,pr:"~18g",k:["arroz_integral","garbanzos","espinaca","tomate","aceite_oliva","limon"],s:"1)Arroz integral 2)Garbanzos+ajo+AOVE 3)Saltea espinaca 2min 4)Arma bowl 5)AOVE+limón",nr:"Espinaca=folato+luteína. Garbanzos=triptófano. AOVE=polifenoles.",nut:{prot:18,omega3:0.2,folate:120,vitE:3,choline:40,fiber:10}},
+{id:"m2",n:"Sardinas con ensalada",ct:"med",t:"15m",b:4,u:3,pr:"~25g",k:["sardina","espinaca","palta","cebolla_roja","limon","quinua"],s:"1)Quinua 2)Espinaca+cebolla 3)Sardinas 4)Palta 5)Aceite de lata+limón",nr:"Sardinas=DHA. Palta=VitE+grasas mono.",nut:{prot:25,omega3:1.5,folate:100,vitE:4,choline:50,fiber:6}},
+{id:"m3",n:"Shakshuka",ct:"med",t:"25m",b:3,u:3,pr:"~20g",k:["huevos","tomate","pimiento","cebolla_roja","ajo","aceite_oliva"],s:"1)Sofríe cebolla+pimiento AOVE 2)Ajo+especias 3)Tomates 10min 4)Huevos adentro 5)Tapa 5-7min",nr:"Huevos=colina. Tomate cocido=licopeno biodisponible.",nut:{prot:20,omega3:0.3,folate:80,vitE:3,choline:250,fiber:5}},
+{id:"m4",n:"Hummus con crudités",ct:"med",t:"15m",b:3,u:2,pr:"~12g",k:["garbanzos","tahini","limon","ajo","aceite_oliva","zanahoria","apio"],s:"1)Licua garbanzos+tahini+limón+ajo+AOVE+agua 2)Corta zanahoria y apio 3)Sirve",nr:"Garbanzos=triptófano. Tahini=calcio. Zanahoria=betacaroteno.",nut:{prot:12,omega3:0.1,folate:140,vitE:2,choline:30,fiber:8}},
+{id:"m5",n:"Trucha al pesto de brócoli",ct:"med",t:"30m",b:5,u:5,pr:"~38g",k:["trucha","brocoli","nueces","ajo","aceite_oliva","quinua","limon"],s:"1)Quinua 2)Licua brócoli+nueces+ajo+AOVE=pesto 3)Unta trucha 4)Hornea 180°C 12min 5)Sobre quinua",nr:"Trucha=DHA. Brócoli=sulforafano. Nueces=ω3 vegetal.",nut:{prot:38,omega3:1.0,folate:130,vitE:5,choline:60,fiber:4}},
+{id:"c1",n:"Seco de pollo",ct:"cri",t:"50m",b:4,u:4,pr:"~35g",k:["pollo","frejol_canario","culantro","cebolla_roja","ajo","aji_amarillo","arveja","zanahoria","aceite_oliva"],s:"1)Licua culantro+cebolla+ají 2)Dora pollo AOVE 3)Licuado+arvejas+zanahoria 4)Tapa 35min 5)Con frejoles. SWAP:quinua por arroz",nr:"Culantro=quercetina. SWAP:AOVE por aceite vegetal.",nut:{prot:35,omega3:0.2,folate:90,vitE:2,choline:70,fiber:9}},
+{id:"c2",n:"Ceviche de bonito",ct:"cri",t:"20m",b:5,u:4,pr:"~28g",k:["bonito","limon","cebolla_roja","aji_amarillo","camote","culantro","choclo"],s:"1)Bonito cubos 2)Limón+ají+sal 3)Cebolla pluma 4)Reposa 5min 5)Camote+choclo",nr:"Bonito CRUDO=ω3 intacto 1.9g. Cebolla roja=quercetina.",nut:{prot:28,omega3:1.9,folate:60,vitE:2,choline:40,fiber:5}},
+{id:"c3",n:"Sudado de caballa",ct:"cri",t:"30m",b:5,u:4,pr:"~30g",k:["caballa","tomate","cebolla_roja","ajo","aji_amarillo","culantro","aceite_oliva"],s:"1)Sofríe cebolla+ajo+ají AOVE 2)Tomates 8min 3)Caballa encima 4)Tapa 10-12min 5)Culantro",nr:"Caballa=DHA 1.6g. Tomate cocido=licopeno 2-3x.",nut:{prot:30,omega3:1.6,folate:70,vitE:3,choline:45,fiber:4}},
+{id:"c4",n:"Locro de zapallo",ct:"cri",t:"35m",b:4,u:3,pr:"~20g",k:["zapallo","quinua","habas","cebolla_roja","ajo","aji_amarillo","huevos","aceite_oliva"],s:"1)Sofríe cebolla+ajo+ají AOVE 2)Zapallo+habas 3)Cocina 4)Quinua 5)Huevo poché+pepitas",nr:"Habas=L-DOPA. Quinua=AA completos. Pepitas=zinc+Mg.",nut:{prot:20,omega3:0.2,folate:110,vitE:4,choline:120,fiber:8}},
+{id:"c5",n:"Aguadito verde",ct:"cri",t:"40m",b:4,u:4,pr:"~25g",k:["pollo","culantro","espinaca","arroz_integral","arveja","zanahoria","cebolla_roja","ajo","aji_amarillo","aceite_oliva"],s:"1)Sofríe cebolla+ajo+ají AOVE 2)Dora pollo 3)Licua culantro+espinaca 4)Arroz integral+arvejas 5)25min",nr:"DOBLE hoja verde=folato+VitK masivo. SWAP:arroz integral.",nut:{prot:25,omega3:0.2,folate:160,vitE:3,choline:60,fiber:7}},
+{id:"c6",n:"Tacu-tacu con bonito",ct:"cri",t:"35m",b:5,u:5,pr:"~38g",k:["lentejas","arroz_integral","bonito","cebolla_roja","ajo","aji_amarillo","aceite_oliva","limon"],s:"1)Mezcla lentejas+arroz integral 2)Dora AOVE 3)Bonito plancha 3min/lado 4)Encima 5)Salsa criolla",nr:"Lentejas=folato+hierro. Bonito=ω3 1.9g. SWAP:AOVE por manteca.",nut:{prot:38,omega3:1.9,folate:150,vitE:2,choline:50,fiber:10}},
+{id:"c7",n:"Causa de bonito",ct:"cri",t:"30m",b:4,u:3,pr:"~22g",k:["papa","palta","bonito","limon","aji_amarillo","aceite_oliva"],s:"1)Papa prensada 2)Ají+limón+AOVE 3)Capa papa-bonito-palta 4)Otra capa 5)Huevo+aceituna",nr:"Bonito=ω3. Palta=VitE. SWAP:AOVE en masa.",nut:{prot:22,omega3:1.0,folate:50,vitE:3,choline:40,fiber:4}},
+{id:"c8",n:"Ensalada criolla+",ct:"cri",t:"10m",b:3,u:1,pr:"~3g",k:["cebolla_roja","tomate","limon","aji_amarillo","culantro","aceite_oliva"],s:"1)Cebolla pluma remoja 5min 2)Escurre 3)Tomate+ají+culantro 4)AOVE+limón 5)Acompaña todo",nr:"Cebolla roja=quercetina máx. AOVE=absorción fitoquímicos.",nut:{prot:3,omega3:0.1,folate:30,vitE:1,choline:10,fiber:3}},
+{id:"c9",n:"Chupe de quinua",ct:"cri",t:"45m",b:4,u:4,pr:"~28g",k:["quinua","huevos","habas","zapallo","cebolla_roja","ajo","aji_amarillo","aceite_oliva"],s:"1)Sofríe cebolla+ajo+ají AOVE 2)Zapallo+habas 10min 3)Quinua+caldo 15min 4)Huevo poché 5)Queso fresco",nr:"Quinua=AA. Habas=L-DOPA. Zapallo=betacaroteno. Huevo=colina.",nut:{prot:28,omega3:0.2,folate:120,vitE:3,choline:130,fiber:8}}
 ];
 
 const F=[
@@ -133,11 +135,41 @@ const mt2=(r)=>{const h=r.k.filter(k=>P[k]);return{h:h.length,t:r.k.length,p:Mat
 const st=(n)=>'★'.repeat(n)+'☆'.repeat(5-n);
 const ac=()=>[...new Set(Object.values(I).map(v=>v.c))];
 
+let LOG=[];try{LOG=JSON.parse(localStorage.getItem('mcn2_log')||'[]')}catch(e){}
+let SKL={};try{SKL=JSON.parse(localStorage.getItem('mcn2_xp')||'{}')}catch(e){}
+const svLog=()=>localStorage.setItem('mcn2_log',JSON.stringify(LOG));
+const svSkl=()=>localStorage.setItem('mcn2_xp',JSON.stringify(SKL));
+
+const logCook=(id)=>{LOG.push({id,ts:Date.now()});svLog();rn();};
+const getWeekLog=()=>{const now=Date.now(),w=7*24*60*60*1000;return LOG.filter(e=>now-e.ts<w);};
+const getWeekNut=()=>{const wl=getWeekLog();const tot={prot:0,omega3:0,folate:0,vitE:0,choline:0,fiber:0};wl.forEach(e=>{const r=R.find(x=>x.id===e.id);if(r&&r.nut)Object.keys(tot).forEach(k=>tot[k]+=r.nut[k]);});return tot;};
+const delLog=(idx)=>{LOG.splice(idx,1);svLog();rn();};
+
+const LEVELS=[{n:"Aprendiz",i:"🥄",xp:0},{n:"Cocinero",i:"🍳",xp:100},{n:"Chef",i:"👨‍🍳",xp:300},{n:"Sous Chef",i:"🔥",xp:600},{n:"Master Chef",i:"⭐",xp:1000}];
+const calcXP=()=>{
+  let xp=0;const seen=new Set();
+  LOG.forEach(e=>{xp+=20;if(!seen.has(e.id)){xp+=50;seen.add(e.id);}});
+  const weeks={};LOG.forEach(e=>{const d=new Date(e.ts),w=`${d.getFullYear()}-W${Math.ceil(((d-new Date(d.getFullYear(),0,1))/86400000+new Date(d.getFullYear(),0,1).getDay()+1)/7)}`;weeks[w]=(weeks[w]||0)+1;});
+  Object.values(weeks).forEach(c=>{if(c>=3)xp+=30;});
+  const wn=getWeekNut(),MT={prot:350,omega3:7,folate:2800,vitE:105,choline:3850,fiber:175};
+  Object.keys(MT).forEach(k=>{if(wn[k]>=MT[k])xp+=25;});
+  return xp;
+};
+const getLevel=(xp)=>{let l=0;LEVELS.forEach((lv,i)=>{if(xp>=lv.xp)l=i;});return l;};
+
+const getFishOmega3=(name)=>{const f=F.find(x=>name.toLowerCase().includes(x.n.toLowerCase())||x.n.toLowerCase().includes(name.toLowerCase()));return f?f.o:null;};
+
 function rn(){
-  const ts=[{id:'pantry',l:'Despensa',i:'🧊'},{id:'recipes',l:'Recetas',i:'🍲'},{id:'market',l:'Mercado',i:'🛒'},{id:'fish',l:'Pescados',i:'🐟'},{id:'evidence',l:'Evidencia',i:'🔬'}];
+  const ts=[{id:'pantry',l:'Despensa',i:'🧊'},{id:'recipes',l:'Recetas',i:'🍲'},{id:'market',l:'Mercado',i:'🛒'},{id:'report',l:'Mi Reporte',i:'📊'},{id:'evidence',l:'Evidencia',i:'🔬'}];
   document.getElementById('tabs').innerHTML=ts.map(t=>`<button class="tb ${T===t.id?'on':''}" onclick="T='${t.id}';XR=null;rn()"><span>${t.i}</span>${t.l}${t.id==='pantry'&&pc()>0?`<span class="bdg">${pc()}</span>`:''}</button>`).join('');
+  const xp=calcXP(),lv=getLevel(xp),lvl=LEVELS[lv],nxt=LEVELS[lv+1];
+  const pct=nxt?Math.min(100,Math.round((xp-lvl.xp)/(nxt.xp-lvl.xp)*100)):100;
+  document.querySelector('.header-sub').innerHTML=`${lvl.i} Nivel ${lv+1} · ${lvl.n} · ${xp} XP`;
+  let xpbar=document.getElementById('xpbar');
+  if(!xpbar){xpbar=document.createElement('div');xpbar.id='xpbar';xpbar.style.cssText='height:3px;background:#33302a;border-radius:2px;margin:4px 40px 0;overflow:hidden;';document.querySelector('.header-sub').after(xpbar);}
+  xpbar.innerHTML=`<div style="height:100%;width:${pct}%;background:var(--gd);border-radius:2px;transition:width .3s"></div>`;
   const c=document.getElementById('cnt');
-  ({pantry:rP,recipes:rR,market:rM,fish:rF,evidence:rE})[T](c);
+  ({pantry:rP,recipes:rR,market:rM,report:rRep,evidence:rE})[T](c);
 }
 
 function rP(c){
@@ -151,6 +183,17 @@ function rP(c){
     its.forEach(ig=>{const hv=!!P[ig.k];h+=`<button class="ib ${hv?'hv':''}" onclick="tg('${ig.k}')"><span class="ic">${ig.i}</span><div style="flex:1;min-width:0"><div class="nm">${ig.n}</div><div class="pr">${ig.p}/${ig.u}</div></div><div class="ck ${hv?'on':''}">${hv?'✓':''}</div></button>`;});
     h+=`</div>`;
   }
+  // Smart suggestions
+  const suggest=[...R].map(r=>({...r,mx:mt2(r)})).filter(r=>r.mx.p>=50).sort((a,b)=>b.mx.p-a.mx.p||(b.b+b.u)-(a.b+a.u)).slice(0,3);
+  if(suggest.length>0){
+    h+=`<div class="stit" style="margin-top:12px">🍲 Puedes cocinar</div>`;
+    suggest.forEach(r=>{
+      const pC=r.mx.p===100?'var(--grn)':'var(--ylw)';
+      h+=`<div class="rc ${r.mx.p===100?'rdy':''}" style="margin-bottom:4px"><div class="rh" onclick="T='recipes';XR='${r.id}';rn()"><div style="display:flex;justify-content:space-between;align-items:center"><div style="flex:1"><span class="rct ${r.ct==='cri'?'cr':'md'}">${r.ct==='cri'?'🇵🇪':'🫒'}</span> <span style="font-size:12px;font-weight:600">${r.n}</span><div class="f" style="font-size:9px;color:var(--mt)">🧠${st(r.b)} 💪${st(r.u)} 🥩${r.pr}</div></div><div style="text-align:center"><div class="rpct" style="color:${pC}">${r.mx.p}%</div></div></div></div>`;
+      if(r.mx.p===100) h+=`<div style="padding:0 10px 8px"><button class="cook-btn" onclick="event.stopPropagation();logCook('${r.id}')">✅ Cociné esto</button></div>`;
+      h+=`</div>`;
+    });
+  }
   c.innerHTML=h;
 }
 
@@ -158,6 +201,7 @@ function rR(c){
   const p=pc();let rs=[...R];
   if(CF==='med')rs=rs.filter(r=>r.ct==='med');else if(CF==='cri')rs=rs.filter(r=>r.ct==='cri');
   rs.sort((a,b)=>mt2(b).p-mt2(a).p);
+  const seen=new Set();LOG.forEach(e=>seen.add(e.id));
   let h=`<div class="cb"><button class="cbtn ${CF==='all'?'on':''}" onclick="CF='all';rn()">Todas</button><button class="cbtn ${CF==='med'?'on':''}" onclick="CF='med';rn()">🫒 Mediterránea</button><button class="cbtn ${CF==='cri'?'on':''}" onclick="CF='cri';rn()">🇵🇪 Criolla</button></div>`;
   if(p>0)h+=`<p class="f" style="font-size:10px;color:var(--mt);margin-bottom:6px">Ordenadas por tus ingredientes</p>`;
   rs.forEach(r=>{
@@ -165,8 +209,10 @@ function rR(c){
     h+=`<div class="rc ${mx.p===100?'rdy':''}"><div class="rh" onclick="XR=XR==='${r.id}'?null:'${r.id}';rn()"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6px"><div style="flex:1"><div style="display:flex;align-items:center;gap:5px;margin-bottom:3px"><span class="rct ${cl}">${lb}</span><span class="f" style="font-size:10px;color:var(--mt)">⏱${r.t}</span></div><h4 style="font-size:13px;font-weight:600;margin-bottom:3px">${r.n}</h4><div class="f" style="font-size:10px;color:var(--mt)">🧠<span class="stars">${st(r.b)}</span> 💪<span class="stars">${st(r.u)}</span> 🥩${r.pr}</div></div>${p>0?`<div style="text-align:center;flex-shrink:0"><div class="rpct" style="color:${pC}">${mx.p}%</div><div class="f" style="font-size:8px;color:var(--mt)">${mx.h}/${mx.t}</div></div>`:''}</div></div>`;
     if(XR===r.id){
       h+=`<div class="rb"><div style="margin-top:8px"><div class="stit" style="margin-top:0">Ingredientes</div><div style="display:flex;flex-wrap:wrap;gap:3px;margin-bottom:10px">`;
-      r.k.forEach(k=>{const ig=I[k];if(!ig)return;const hv=!!P[k];h+=`<span class="ch ${hv?'hv':'nd'}" onclick="tg('${k}')">${hv?'✓':'○'} ${ig.i}${ig.n} <span style="font-size:8px;color:var(--mt)">${ig.p}</span></span>`;});
-      h+=`</div><div class="stit" style="margin-top:0">Preparación</div><p class="f" style="font-size:11px;line-height:1.5;color:var(--t2);margin-bottom:8px">${r.s}</p><div class="nb"><div class="nl">🧠 VALOR NEUROCOGNITIVO</div><p>${r.nr}</p></div></div></div>`;
+      r.k.forEach(k=>{const ig=I[k];if(!ig)return;const hv=!!P[k];const o3=ig.c==='Pescados'?getFishOmega3(ig.n):null;h+=`<span class="ch ${hv?'hv':'nd'}" onclick="tg('${k}')">${hv?'✓':'○'} ${ig.i}${ig.n}${o3?' ω3:'+o3+'g':''} <span style="font-size:8px;color:var(--mt)">${ig.p}</span></span>`;});
+      h+=`</div><div class="stit" style="margin-top:0">Preparación</div><p class="f" style="font-size:11px;line-height:1.5;color:var(--t2);margin-bottom:8px">${r.s}</p><div class="nb"><div class="nl">🧠 VALOR NEUROCOGNITIVO</div><p>${r.nr}</p></div>`;
+      h+=`<button class="cook-btn" onclick="logCook('${r.id}')">✅ Cociné esto · +${seen.has(r.id)?20:70} XP</button>`;
+      h+=`</div></div>`;
     }
     h+=`</div>`;
   });
@@ -186,13 +232,33 @@ function rM(c){
   c.innerHTML=h;
 }
 
-function rF(c){
-  let h=`<div class="cd"><h3>🐟 Pescados Pacífico peruano</h3><p class="csub">ω3 (g/100g). Meta MIND: ≥1/sem. <span class="tg tg-t">[TEXTO-REF]</span></p></div>`;
-  h+=`<div class="ib2"><p>🇵🇪 <strong>No necesitas salmón.</strong> Bonito+caballa+anchoveta = ω3 igual o superior por 1/5 del precio.</p></div>`;
-  F.forEach((f,i)=>{
-    h+=`<div class="fi" style="border-left:3px solid ${f.cl}"><div style="display:flex;justify-content:space-between"><div><div style="display:flex;align-items:center;gap:5px;margin-bottom:3px"><span class="m" style="font-size:10px;font-weight:700;color:${f.cl}">#${i+1}</span><h4 style="font-size:14px;font-weight:700">${f.n}</h4></div><div class="f" style="font-size:10px;color:var(--mt)">${f.ss} · Hg:${f.h}</div></div><div style="text-align:right"><div class="m" style="font-size:18px;font-weight:700;color:var(--gold)">${f.o}g</div><div style="font-size:8px;color:var(--mt)">ω3/100g</div></div></div><div style="display:flex;gap:4px;margin:6px 0"><span class="ftg" style="color:var(--t2)">🥩${f.pr}g</span><span class="ftg" style="color:var(--gold)">${f.p}</span></div><div class="ft">💡 ${f.tp}</div></div>`;
+function rRep(c){
+  const wl=getWeekLog(),wn=getWeekNut();
+  const MT={prot:350,omega3:7,folate:2800,vitE:105,choline:3850,fiber:175};
+  const NL={prot:'Proteína',omega3:'Omega-3',folate:'Folato',vitE:'Vit E',choline:'Colina',fiber:'Fibra'};
+  const NU={prot:'g',omega3:'g',folate:'µg',vitE:'mg',choline:'mg',fiber:'g'};
+  let h=`<div class="cd"><h3>📊 Mi Reporte Semanal</h3><p class="csub">${wl.length} comida${wl.length!==1?'s':''} esta semana</p></div>`;
+  h+=`<div class="cd"><h4 class="f" style="font-size:12px;color:var(--gold);margin-bottom:8px">Progreso MIND semanal</h4>`;
+  Object.keys(MT).forEach(k=>{
+    const pct=Math.min(100,Math.round(wn[k]/MT[k]*100));
+    const cl=pct>=80?'var(--grn)':pct>=50?'var(--ylw)':'var(--red)';
+    h+=`<div style="margin-bottom:6px"><div class="f" style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:2px"><span style="color:var(--t2)">${NL[k]}</span><span class="m" style="color:${cl}">${Math.round(wn[k]*10)/10}/${MT[k]}${NU[k]} (${pct}%)</span></div><div style="height:6px;background:#33302a;border-radius:3px;overflow:hidden"><div style="height:100%;width:${pct}%;background:${cl};border-radius:3px;transition:width .3s"></div></div></div>`;
   });
-  h+=`<div class="cd"><h4 class="f" style="font-size:12px;color:var(--red);margin-bottom:4px">⚠️ Evitar: mercurio alto</h4><p class="f" style="font-size:11px;color:var(--t2)">Atún aleta amarilla, pez espada, tiburón. Atún enlatado(skipjack) OK 1-2x/sem.</p></div>`;
+  h+=`</div>`;
+  h+=`<div class="cr"><div class="cc"><div class="l">💪 Músculo</div><div class="v" style="color:${wn.prot>=MT.prot*.8?'var(--grn)':'var(--ylw)'}">${Math.round(wn.prot)}g</div><div class="d">Meta: ${MT.prot}g/sem</div></div><div class="cc"><div class="l">🧠 Cognición</div><div class="v" style="color:${wn.omega3>=MT.omega3*.8?'var(--grn)':'var(--ylw)'}">${(Math.round(wn.omega3*10)/10)}g</div><div class="d">Meta: ${MT.omega3}g ω3/sem</div></div><div class="cc"><div class="l">🧬 Cerebro</div><div class="v" style="color:${wn.choline>=MT.choline*.8?'var(--grn)':'var(--ylw)'}">${Math.round(wn.choline)}mg</div><div class="d">Colina/sem</div></div></div>`;
+  h+=`<div class="stit" style="margin-top:10px">Historial</div>`;
+  if(LOG.length===0) h+=`<div class="cd"><p class="f" style="font-size:11px;color:var(--mt)">Aún no has logueado comidas. Cocina una receta y presiona "Cociné esto".</p></div>`;
+  else{
+    [...LOG].reverse().slice(0,20).forEach((e,i)=>{
+      const r=R.find(x=>x.id===e.id);if(!r)return;
+      const d=new Date(e.ts).toLocaleDateString('es-PE',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+      const ridx=LOG.length-1-i;
+      h+=`<div class="mr"><span class="ic">${r.ct==='cri'?'🇵🇪':'🫒'}</span><div style="flex:1"><div class="nm">${r.n}</div><div class="nr">${d} · 🥩${r.pr}</div></div><button class="f" style="font-size:9px;color:var(--red);padding:4px" onclick="delLog(${ridx})">✕</button></div>`;
+    });
+  }
+  const xp=calcXP(),lv=getLevel(xp),lvl=LEVELS[lv],nxt=LEVELS[lv+1];
+  h+=`<div class="cd" style="margin-top:8px;border-color:var(--gd)"><h4 class="f" style="font-size:12px;color:var(--gold);margin-bottom:6px">${lvl.i} Nivel ${lv+1}: ${lvl.n}</h4><div class="f" style="font-size:11px;color:var(--t2);margin-bottom:6px">${xp} XP${nxt?` · Siguiente: ${nxt.n} (${nxt.xp} XP)`:' · ¡Nivel máximo!'}</div>`;
+  h+=`<div class="f" style="font-size:9px;color:var(--mt)">+20 XP por comida · +50 XP receta nueva · +30 XP si 3+/semana · +25 XP meta MIND</div></div>`;
   c.innerHTML=h;
 }
 
